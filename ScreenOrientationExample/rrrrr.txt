@@ -1,0 +1,268 @@
+................... (whole file)
+package ui.robot.rotate;
+
+enum aa {
+    ADAPTIVE,
+    FL,
+    FP,
+    FRP,
+    FRL,
+    AUTO,
+    STOCK_AUTO,
+    STOCK_MANUAL,
+    INIT,
+    DISABLE
+}
+................... (whole file)
+package ui.robot.rotate;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.media.AudioManager;
+import android.view.LayoutInflater;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.SeekBar;
+
+public class ab extends FrameLayout {
+    boolean a = true;
+    SeekBar b = null;
+    SeekBar c = null;
+    SeekBar d = null;
+    SeekBar e = null;
+    SeekBar f = null;
+    AudioManager g = null;
+    private Context h;
+    private LayoutInflater i;
+    private int j = 2;
+
+    public ab(Context context) {
+        super(context);
+        try {
+            this.a = false;
+            this.h = context;
+            this.i = LayoutInflater.from(context);
+            this.i.inflate(2130903044, this);
+            setVisibility(4);
+        } catch (Exception e) {
+        }
+    }
+
+    public void a() {
+        setVisibility(4);
+        this.a = false;
+    }
+
+    public void a(int i, int i2, int i3, int i4) {
+        try {
+            this.a = true;
+            int orientation = ((WindowManager) this.h.getSystemService("window")).getDefaultDisplay().getOrientation();
+            String str = "";
+            str = "";
+            if (orientation == 0) {
+                str = "ROTATION_0";
+            }
+            if (orientation == 3) {
+                str = "ROTATION_270";
+            }
+            if (orientation == 2) {
+                str = "ROTATION_180";
+            }
+            if (orientation == 1) {
+                str = "ROTATION_90";
+            }
+            if (i2 == 2) {
+                str = "SCREEN_ORIENTATION_PORTRAIT";
+            }
+            if (i2 == 0) {
+                str = "SCREEN_ORIENTATION_LANDSCAPE";
+            }
+            if (i2 == 8) {
+                str = "SCREEN_ORIENTATION_REVERSE_LANDSCAPE";
+            }
+            if (i2 == 9) {
+                str = "SCREEN_ORIENTATION_REVERSE_PORTRAIT";
+            }
+            if (orientation == 0) {
+                if (i2 == 2) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837510));
+                }
+                if (i2 == 0) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837516));
+                }
+                if (i2 == 8) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837523));
+                }
+                if (i2 == 9) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837521));
+                }
+            }
+            if (orientation == 3) {
+                if (i2 == 2) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837517));
+                }
+                if (i2 == 0) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837520));
+                }
+                if (i2 == 9) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837524));
+                }
+            }
+            if (orientation == 1) {
+                if (i2 == 2) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837524));
+                }
+                if (i2 == 8) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837520));
+                }
+                if (i2 == 9) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837517));
+                }
+            }
+            if (orientation == 2) {
+                if (i2 == 2) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837521));
+                }
+                if (i2 == 0) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837523));
+                }
+                if (i2 == 8) {
+                    setBackgroundDrawable(getResources().getDrawable(2130837516));
+                }
+            }
+            getBackground().setAlpha(80);
+            WindowManager windowManager = (WindowManager) this.h.getSystemService("window");
+            LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.height = i3;
+            layoutParams.width = i3;
+            this.j = i2;
+            layoutParams.flags = i4;
+            layoutParams.format = -3;
+            layoutParams.type = 2003;
+            layoutParams.gravity = i;
+            setVisibility(4);
+            windowManager.updateViewLayout(this, layoutParams);
+            setVisibility(0);
+        } catch (Exception e) {
+        }
+    }
+
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+    }
+}
+
+...................
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;            
+...
+    private OrientationEventListener G;
+    private WindowManager H;
+    private View I;
+    private LayoutParams J;
+    private CharSequence K;
+...
+            this.I = new View(getApplicationContext());
+            this.H = (WindowManager) getSystemService("window");
+            this.J = new LayoutParams(0, 0, this.o, this.n, -1);
+            this.J.gravity = 51;
+            this.J.x = -5;
+            this.J.y = -5;
+            this.J.screenOrientation = 0;
+
+
+..................
+import android.view.KeyEvent;
+...
+            this.q = (WindowManager) getSystemService("window");
+            if (!this.r) {
+                this.q.addView(this.p, new LayoutParams(2003, 8));
+            }
+            this.r = true;
+            setContentView(2130903042);
+            this.o = (SeekBar) findViewById(2131230732);
+            this.o.setEnabled(false);
+            a(this.o);
+            this.h = (ToggleButton) findViewById(2131230726);
+            this.h.setOnCheckedChangeListener(new aj(this));
+            this.i = (ToggleButton) findViewById(2131230731);
+            this.i.setEnabled(false);
+            this.i.setOnCheckedChangeListener(new ak(this));
+            this.j = (ToggleButton) findViewById(2131230728);
+            this.j.setOnCheckedChangeListener(new al(this));
+            this.k = (ToggleButton) findViewById(2131230730);
+            this.k.setEnabled(false);
+            this.s = (ToggleButton) findViewById(2131230727);
+            this.s.setOnCheckedChangeListener(new am(this));
+            this.n = (ToggleButton) findViewById(2131230733);
+            this.n.setEnabled(false);
+            this.n.setOnCheckedChangeListener(new an(this));
+            Button button = (Button) findViewById(2131230729);
+...
+    protected void onDestroy() {
+        try {
+            super.onDestroy();
+            if (this.r) {
+                this.q.removeView(this.p);
+                this.r = false;
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    protected void onPause() {
+        super.onPause();
+        try {
+            if (this.r) {
+                this.q.removeView(this.p);
+                this.r = false;
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    protected void onResume() {
+        super.onResume();
+        try {
+            if (!this.r) {
+                this.q.addView(this.p, new LayoutParams(2003, 8));
+                this.r = true;
+            }
+        } catch (Exception e) {
+        }
+    }
+.........
+SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyService.a);
+.........
+import android.view.OrientationEventListener;
+...
+    public void onOrientationChanged(int i) {
+        if (i != -1 && this.a.g != aa.STOCK_MANUAL && this.a.g != aa.STOCK_AUTO && this.a.g != aa.FL && this.a.g != aa.FP && this.a.g != aa.FRL && this.a.g != aa.FRP && this.a.g != aa.STOCK_AUTO && this.a.g != aa.STOCK_AUTO) {
+            MyService myService = this.a;
+            myService.A = myService.A + 1;
+            if (this.a.A == 1) {
+                if (i < 25 || i > 335) {
+                    this.a.C = 2;
+                    a();
+                }
+                if (i < 295 && i > 245) {
+                    this.a.C = 0;
+                    a();
+                }
+                if (i < 115 && i > 65) {
+                    this.a.C = 8;
+                    a();
+                }
+                if (i < 205 && i > 155) {
+                    this.a.C = 9;
+                    a();
+                }
+                this.a.A = 0;
+            }
+        }
+.........
+import android.view.WindowManager.LayoutParams;
+...
+        this.j = new LayoutParams();
+        this.j.screenOrientation = 2;

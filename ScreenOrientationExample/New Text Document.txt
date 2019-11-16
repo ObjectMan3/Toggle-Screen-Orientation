@@ -1,0 +1,58 @@
+package com.objectman.landscaper;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.content.pm.ActivityInfo;
+import android.provider.Settings;
+import android.widget.Toast;
+
+public class ToggleLadscape extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int orientation = getResources().getConfiguration().orientation;
+        //Toast.makeText(getApplicationContext(),orientation, Toast.LENGTH_LONG).show();
+        switch(orientation) {
+            case (android.content.res.Configuration.ORIENTATION_PORTRAIT):
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION,
+                        0
+                );
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.USER_ROTATION,
+                        android.view.Surface.ROTATION_90
+                );
+                super.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                Toast.makeText(getApplicationContext(),"Landscaped", Toast.LENGTH_SHORT).show();
+                super.finishAndRemoveTask();
+                break;
+            case (android.content.res.Configuration.ORIENTATION_LANDSCAPE):
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION,
+                        0
+                );
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.USER_ROTATION,
+                        android.view.Surface.ROTATION_0
+                );
+                super.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                Toast.makeText(getApplicationContext(),"Portrait set", Toast.LENGTH_SHORT).show();
+                finishAndRemoveTask();
+                break;
+            default:
+                super.finishAndRemoveTask();
+                break;
+
+        }
+        super.finishAndRemoveTask();
+        }
+
+    }
+

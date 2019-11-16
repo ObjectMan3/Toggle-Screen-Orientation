@@ -1,0 +1,76 @@
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Settings.System.putInt(
+                getContentResolver(),
+                Settings.System.ACCELEROMETER_ROTATION,
+                0
+        );
+        Settings.System.putInt(
+                getContentResolver(),
+                Settings.System.USER_ROTATION,
+                android.view.Surface.ROTATION_90
+        );
+
+        final int orientation = getRequestedOrientation();
+        switch(orientation) {
+            case ActivityInfo.SCREEN_ORIENTATION_PORTRAIT:
+                super.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION,
+                        0
+                );
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.USER_ROTATION,
+                        android.view.Surface.ROTATION_90
+                );
+                break;
+            case ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE:
+                super.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION,
+                        0
+                );
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.USER_ROTATION,
+                        android.view.Surface.ROTATION_0
+                );
+                break;
+        }
+        int n=0;
+        System.exit(n);
+
+
+
+
+IFS_________________
+         if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+            super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            Settings.System.putInt(
+                    getContentResolver(),
+                    Settings.System.ACCELEROMETER_ROTATION,
+                    0
+            );
+            Settings.System.putInt(
+                    getContentResolver(),
+                    Settings.System.USER_ROTATION,
+                    android.view.Surface.ROTATION_90
+            );
+        }
+            else {
+                    //ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE:
+                super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION,
+                        0
+                );
+                Settings.System.putInt(
+                        getContentResolver(),
+                        Settings.System.USER_ROTATION,
+                        android.view.Surface.ROTATION_0
+                );
+
+        }

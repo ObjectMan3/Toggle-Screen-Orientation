@@ -1,0 +1,84 @@
+RequestedOrientation = clsUtilidades.GetScreenOrientation();
+RequestedOrientation = Android.Content.PM.ScreenOrientation.Landscape;
+
+
+
+ // Check screen orientation or screen rotate event here
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen for landscape and portrait and set portrait mode always
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+
+
+
+
+
+ // Check screen orientation or screen rotate event here
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+ 
+        // Checks the orientation of the screen for landscape and portrait and set portrait mode always
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+
+
+
+
+
+
+
+
+//Get current screen orientation
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int orientation = display.getOrientation(); 
+         switch(orientation) {
+            case Configuration.ORIENTATION_PORTRAIT:
+                setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                break;
+            case Configuration.ORIENTATION_LANDSCAPE:
+                setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                break;               	
+        }
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+
+1
+2
+3
+import android.view.Display;
+import android.content.res.Configuration;
+import android.view.WindowManager;
+//Get current screen orientation
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int orientation = display.getOrientation(); 
+         switch(orientation) {
+            case Configuration.ORIENTATION_PORTRAIT:
+                setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                break;
+            case Configuration.ORIENTATION_LANDSCAPE:
+                setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                break;               	
+        }
